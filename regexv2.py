@@ -1,3 +1,9 @@
+"""
+Author: Juan Antonio Landeros Velazquez
+Date: 25/03/2024
+Project: E1 Implementation of Lexical Analysis (Automaton and Regular Expression)
+purpose of the project
+"""
 import re
 
 def parse(input_string):

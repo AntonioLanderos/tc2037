@@ -1,6 +1,8 @@
 # Description
 The language I chose was a set of words from the Chalkobsa language.
-Here´s the set of words:
+Chakobsa, the secret language of the Fremen in Frank Herbert's "Dune" series, is likely inspired by the real-life Chakobsa used by medieval Circassian knights and princes. Derived from Bzhedukh words meaning 'the language of hunters,' it aligns with Herbert's portrayal of Chakobsa as a hunting language. The Fremen language in "Dune" appears to be a composite of various real-world languages, including French, Romani, Arabic, Slavic, Greek, Sanskrit, and Hebrew. In the 2021 film adaptation of "Dune," linguist David J. Peterson created an expanded version of Chakobsa, known as Neo-Chakobsa, based on existing samples and newly devised grammar. Peterson's work contributes to the linguistic richness of the "Dune" universe.
+
+Here's the set of words:
 - mahdi
 - maqbara
 - matar
@@ -21,6 +23,17 @@ The presented automata is equivalent to the following regular expression:
 For the implementation of lexical analysis, I used the regular expression I described above. The lexical analyzer, implemented in the file regexv2.py, tokenizes input strings according to the rules defined by the DFA.
 
 Example inputs and outputs include:
+- Inputs: the inputs are stored in an array of strings
+- Outputs:
+  'The string *mahdi* is accepted? Yes'
+  'The string *maaula* is accepted? No'
+  etc.
+
+  'Test *1* passed'
+  'Test *2* passed'
+  etc.
+
+  (The text marked in *italics* represents an iterator that goes through the array of inputs and a counter that checks if they pass the tests)
 
 # Analysis
 The implementation utilizes Python's regular expression library (re) to parse input strings according to the defined rules of the Chalkobsa language. Here's an analysis of the implementation:
@@ -32,3 +45,8 @@ accept(parsed_string): This function checks if the parsed string is not None. If
 inputs: This list contains predefined input strings for testing the lexical analyzer.
 
 Testing: The lexical analyzer is tested with both predefined input strings and additional verification. For each input string, the parse() function is called to parse the input, and the accept() function is then called to determine if the string is accepted. The results are printed to the console.  O(n*m)
+
+The time complexity of my model is primarily determined by the time complexity of the regular expression matching operation, which is O(n)
+
+# References
+Wiki, C. T. D. (s. f.). Chakobsa. Dune Wiki. https://dune.fandom.com/wiki/Chakobsa 

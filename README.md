@@ -1,5 +1,5 @@
 # Description
-The language I chose was a set of words from the Chalkobsa language.
+The language I chose was a set of words from the Chakobsa language.
 Chakobsa, the secret language of the Fremen in Frank Herbert's "Dune" series, is likely inspired by the real-life Chakobsa used by medieval Circassian knights and princes. Derived from Bzhedukh words meaning 'the language of hunters,' it aligns with Herbert's portrayal of Chakobsa as a hunting language. The Fremen language in "Dune" appears to be a composite of various real-world languages, including French, Romani, Arabic, Slavic, Greek, Sanskrit, and Hebrew. In the 2021 film adaptation of "Dune," linguist David J. Peterson created an expanded version of Chakobsa, known as Neo-Chakobsa, based on existing samples and newly devised grammar. Peterson's work contributes to the linguistic richness of the "Dune" universe.
 
 Here's the set of words:
@@ -36,7 +36,7 @@ Example inputs and outputs include:
   (The text marked in *italics* represents an iterator that goes through the array of inputs and a counter that checks if they pass the tests)
 
 # Analysis
-The implementation utilizes Python's regular expression library (re) to parse input strings according to the defined rules of the Chalkobsa language. Here's an analysis of the implementation:
+The implementation utilizes Python's regular expression library (re) to parse input strings according to the defined rules of the Chakobsa language. Here's an analysis of the implementation:
 
 parse(input_string): This function attempts to match the input string with the regular expression representing the Chalkobsa language. If a match is found, the input string is returned; otherwise, None is returned.  O(n)
 

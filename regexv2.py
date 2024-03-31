@@ -67,24 +67,4 @@ ans = accept(parse('mahdi'))
 if ans:
   print('\nTest 1 passed')
   count = count + 1
-
-ans = accept(parse('maqbara'))
-if ans:
-  print('Test 2 passed')
-  count = count + 1
-
-ans = accept(parse('matar'))
-if ans:
-  print('Test 3 passed')
-  count = count + 1
-
-ans = accept(parse('maula'))
-if ans:
-  print('Test 4 passed')
-  count = count + 1
-
-ans = accept(parse('midri'))
-if ans:
-  print('Test 5 passed')
-  count = count + 1
 '''

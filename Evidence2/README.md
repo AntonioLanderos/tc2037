@@ -44,3 +44,7 @@ Tests are critical to ensuring that the CFG and parser work correctly. Each test
 
 # Analysis
 The CFG for this Ruby-like syntax is a Type-2 grammar in the Chomsky Hierarchy. Type-2 grammars, or context-free grammars, have rules with a single non-terminal on the left-hand side and a string of terminals and/or non-terminals on the right. This allows for a hierarchical structure necessary to describe the nested nature of programming language syntax. It is not a Type-1 or context-sensitive grammar because such grammars have rules where the production can depend on the context of the non-terminal, which is unnecessary for the structural patterns in Ruby. Similarly, it is not a Type-3 or regular grammar, which is less expressive and cannot handle the nesting and recursion present in Ruby syntax.
+
+The time complexity if the CFG parsing model using NLTK's library in python is principally tied to the length of the input string, denoted as *n*. Assuming *i* is the position in the input string, the parser examines substrings from position *i* to *n*.
+
+For a comprenhensive CFG, the worst case time complexity is O(n^3), where each of the *n* positions iterates over O(n^2) possible substrings. However, thanks to NLTK's optimizations and a lack of ambiguity in the grammar used in this evidence, the time complexity is typically O(n^2)

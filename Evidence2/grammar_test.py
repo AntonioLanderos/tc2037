@@ -27,6 +27,11 @@ parser = nltk.ChartParser(grammar)
 
 # Input sentence to be parsed
 sentence = 'if 3 < 5 then my_variable = "Ruby" end'
+# sentence = 'while 3 <= 9 do id = "Hello" end'
+# sentence = 'id = "Hello"'
+# sentence = 'my_variable = "string:#{variable}"'
+
+
 
 # Tokenize the sentence
 #tokens = nltk.word_tokenize(sentence)

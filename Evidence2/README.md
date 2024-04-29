@@ -1,0 +1,46 @@
+# Description
+The language I chose to generate its grammar was *Ruby programming language*.
+### The Language: Ruby
+Ruby is a high-level, interpreted programming language designed for simplicity and productivity. Its elegant syntax is natural to read and easy to write. It supports multiple programming paradigms, including procedural, object-oriented, and functional programming.
+
+### The Modeling Technique: Context-Free Grammar (CFG)
+A CFG is a collection of recursive rewriting rules used to generate patterns of strings. A CFG consists of a number of productions, each of which states that a certain symbol can be replaced by a sequence of other symbols. CFG is powerful enough to describe the syntax of most programming languages, and Ruby is no exception. 
+
+### Elimination of Ambiguity
+Ambiguity in a grammar means there's more than one way to parse a string according to the grammar. This was resolved by refining the production rules such as the `statement_list` to ensure a unique parse tree for every valid string of the language.
+
+### Elimination of Left Recursion
+Left recursion in a CFG occurs when a rule can call itself recursively as its first element, potentially leading to infinite recursion in certain parser implementations. This was removed by refactoring the grammar into right recursion, which is suitable for recursive descent parsers and many other parsing techniques.
+
+# Model of the Solution
+### The CFG
+The provided CFG for Ruby includes the fundamental elements such as expressions, conditionals, loops, and assignment. The CFG is used to parse simple Ruby-like syntax and can be extended for a more complete representation of the language.
+
+### Elimination of Ambiguity in the CFG
+The `statement_list` non-terminal was refactored to eliminate ambiguity by using right recursion. The CFG ensures that each valid Ruby code snippet corresponds to exactly one derivation tree.
+
+### Elimination of Left Recursion in the CFG
+To remove left recursion, production rules were refactored to right-recursive alternatives. This transformation was applied to rules such as the `statement_list` and `expression` to make them suitable for LL parsing algorithms.
+
+# Implementation
+For the implementation of a tester for my grammar I used Python and the Natural Language Toolkit (NLTK) library, which is a powerful tool for working with human language data. A CFG is defined in the NLTK format, and the `nltk.ChartParser` is used to parse sentences according to this grammar.
+### Python Code
+The Python code provided defines the CFG and utilizes NLTK's parser. The code tokenizes an input string and attempts to parse it according to the CFG, printing the parse tree if successful.
+The grammar tester, implemented in the file grammar_test.py, which uses a CFG as an input an parses through it to generate its parse tree.
+To use the Python file, we have to make sure that NLTK is installed and the CFG is correctly defined in the script. Run the script with a test sentence to see if it gets correctly parsed according to the CFG.
+The program outputs a parse tree that represents the structure of the input according to the CFG. If the input does not conform to the CFG, the parser will not output a tree.
+
+### Example Inputs and Outputs
+- Input: `if 3 < 5 then my_variable = "Ruby" end`
+- Output: A parse tree representing the structure of the if-statement.
+
+# Tests
+Tests are critical to ensuring that the CFG and parser work correctly. Each test consists of an input string that either should or should not be accepted by the grammar. The test documentation should include the input, expected outcome, and the actual outcome, whether it's a parse tree or an error indicating that the input is not accepted.
+
+### Test Example
+- Input: `while 3 <= 9 do id = "looping" end`
+- Expected Outcome: A parse tree showing the structure of the while loop.
+- Actual Outcome: A parse tree (if the CFG and parser are functioning correctly).
+
+# Analysis
+The CFG for this Ruby-like syntax is a Type-2 grammar in the Chomsky Hierarchy. Type-2 grammars, or context-free grammars, have rules with a single non-terminal on the left-hand side and a string of terminals and/or non-terminals on the right. This allows for a hierarchical structure necessary to describe the nested nature of programming language syntax. It is not a Type-1 or context-sensitive grammar because such grammars have rules where the production can depend on the context of the non-terminal, which is unnecessary for the structural patterns in Ruby. Similarly, it is not a Type-3 or regular grammar, which is less expressive and cannot handle the nesting and recursion present in Ruby syntax.

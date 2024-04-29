@@ -14,7 +14,7 @@ Left recursion in a CFG occurs when a rule can call itself recursively as its fi
 
 # Model of the Solution
 ### The CFG
-![Original CFG](image.png)
+![Original CFG](OriginalCFG.png)
 The provided CFG for Ruby includes the fundamental elements such as expressions, conditionals, loops, and assignment. The CFG is used to parse simple Ruby-like syntax and can be extended for a more complete representation of the language.
 
 ### Elimination of Ambiguity

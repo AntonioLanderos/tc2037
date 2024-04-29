@@ -19,7 +19,7 @@ The provided CFG for Ruby includes the fundamental elements such as expressions,
 ### Elimination of Ambiguity
 We will remove any ambiguities associated with how statement_list and argument_list are derived by ensuring that each valid code snippet corresponds to exactly one derivation tree.
 #### Explanation of Changes
-Intermediate States: introduced statement_tail and to handle a sequence of statements, as well as argument_tail. They are non-terminals that prevent ambiguity in sequences of statements and arguments.
+Intermediate States: introduced statement_tail, as well as argument_tail. They are non-terminals that prevent ambiguity in sequences of statements and arguments.
 
 ### Elimination of Left Recursion
 In order to eliminate ambiguity we added non-terminal statements 'statement_list_tail' and 'argument_list_tail', so there is no left recursion and the CFG remains the same.

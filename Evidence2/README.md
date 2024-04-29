@@ -16,11 +16,21 @@ Left recursion in a CFG occurs when a rule can call itself recursively as its fi
 ### The CFG
 The provided CFG for Ruby includes the fundamental elements such as expressions, conditionals, loops, and assignment. The CFG is used to parse simple Ruby-like syntax and can be extended for a more complete representation of the language.
 
-### Elimination of Ambiguity in the CFG
-The `statement_list` non-terminal was refactored to eliminate ambiguity by using right recursion. The CFG ensures that each valid Ruby code snippet corresponds to exactly one derivation tree.
+### Elimination of Ambiguity
+We will remove any ambiguities associated with how statement_list and argument_list are derived by ensuring that each valid code snippet corresponds to exactly one derivation tree.
+#### Explanation of Changes
+Intermediate States: introduced statement_tail and to handle a sequence of statements, as well as argument_tail. They are non-terminals that prevent ambiguity in sequences of statements and arguments.
 
-### Elimination of Left Recursion in the CFG
-To remove left recursion, production rules were refactored to right-recursive alternatives. This transformation was applied to rules such as the `statement_list` and `expression` to make them suitable for LL parsing algorithms.
+### Elimination of Left Recursion
+In order to eliminate ambiguity we added non-terminal statements 'statement_list_tail' and 'argument_list_tail', so there is no left recursion and the CFG remains the same.
+Using the substitution method we saw in class we would get: 
+- For *statement_list* with left recursion:
+statement_list -> statement statement_list'
+statement_list' -> statement statement_list' | ε
+- For *argument_list* with left recursion:
+argument_list -> expression argument_list'
+argument_list' -> ',' expression argument_list' | ε
+
 
 # Implementation
 For the implementation of a tester for my grammar I used Python and the Natural Language Toolkit (NLTK) library, which is a powerful tool for working with human language data. A CFG is defined in the NLTK format, and the `nltk.ChartParser` is used to parse sentences according to this grammar.
@@ -38,7 +48,7 @@ The program outputs a parse tree that represents the structure of the input acco
 Tests are critical to ensuring that the CFG and parser work correctly. Each test consists of an input string that either should or should not be accepted by the grammar. The test documentation should include the input, expected outcome, and the actual outcome, whether it's a parse tree or an error indicating that the input is not accepted.
 
 ### Test Example
-- Input: `while 3 <= 9 do id = "looping" end`
+- Input: `while 3 <= 9 do id = "Hello" end`
 - Expected Outcome: A parse tree showing the structure of the while loop.
 - Actual Outcome: A parse tree (if the CFG and parser are functioning correctly).
 

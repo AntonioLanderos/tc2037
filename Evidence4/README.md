@@ -28,6 +28,7 @@ The Python code provided defines the CFG and utilizes NLTK's parser. The code to
 The grammar tester, implemented in the file grammar_test.py, which uses a CFG as an input an parses through it to generate its parse tree.
 To use the Python file, we have to make sure that NLTK is installed and the CFG is correctly defined in the script. Run the script with a test sentence to see if it gets correctly parsed according to the CFG.
 The program outputs a parse tree that represents the structure of the input according to the CFG. If the input does not conform to the CFG, the parser will not output a tree.
+* explain mutex, and what the code does *
 
 ### Example Inputs and Outputs
 - Input: `if 3 < 5 then my_variable = "Ruby" end`

@@ -14,14 +14,17 @@ Left recursion in a CFG occurs when a rule can call itself recursively as its fi
 
 # Model of the Solution
 ### The CFG
+![Original CFG](OriginalCFG.png)
 The provided CFG for Ruby includes the fundamental elements such as expressions, conditionals, loops, and assignment. The CFG is used to parse simple Ruby-like syntax and can be extended for a more complete representation of the language.
 
 ### Elimination of Ambiguity
+![Non-ambiguous CFG](NonAmbiguous.png)
 We will remove any ambiguities associated with how statement_list and argument_list are derived by ensuring that each valid code snippet corresponds to exactly one derivation tree.
 #### Explanation of Changes
-Intermediate States: introduced statement_tail and to handle a sequence of statements, as well as argument_tail. They are non-terminals that prevent ambiguity in sequences of statements and arguments.
+Intermediate States: introduced statement_tail, as well as argument_tail. They are non-terminals that prevent ambiguity in sequences of statements and arguments.
 
 ### Elimination of Left Recursion
+![Eliminate left recursion](NoLeft.png)
 In order to eliminate ambiguity we added non-terminal statements 'statement_list_tail' and 'argument_list_tail', so there is no left recursion and the CFG remains the same.
 Using the substitution method we saw in class we would get: 
 - For *statement_list* with left recursion:

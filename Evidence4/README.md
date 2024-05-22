@@ -1,36 +1,25 @@
 # Description
-The language I chose to generate its grammar was *Ruby programming language*.
-### The Language: Ruby
-Ruby is a high-level, interpreted programming language designed for simplicity and productivity. Its elegant syntax is natural to read and easy to write. It supports multiple programming paradigms, including procedural, object-oriented, and functional programming.
+### Context of the Problem
+The problem "1114. Print in Order" from LeetCode requires ensuring that three methods (first, second, third) are executed in the correct order, despite being called from different threads. This problem is an excellent example of a common concurrency issue where the order of execution needs to be controlled to maintain correct behavior. Solving this problem ensures that multithreaded applications behave deterministically and avoids issues that can arise from race conditions.
 
-### The Modeling Technique: Context-Free Grammar (CFG)
-A CFG is a collection of recursive rewriting rules used to generate patterns of strings. A CFG consists of a number of productions, each of which states that a certain symbol can be replaced by a sequence of other symbols. CFG is powerful enough to describe the syntax of most programming languages, and Ruby is no exception. 
+### Why It Is Useful
+Concurrency is a fundamental concept in modern programming, allowing multiple operations to be performed simultaneously. It is widely used in applications that require parallel processing, such as web servers, data processing, and real-time systems. Understanding how to control the order of execution in a concurrent environment is crucial for building reliable and efficient systems.
 
-### Elimination of Ambiguity
-Ambiguity in a grammar means there's more than one way to parse a string according to the grammar. This was resolved by refining the production rules such as the `statement_list` to ensure a unique parse tree for every valid string of the language.
+# Model of the solution
+Let's model the problem using a diagram that represents the state transitions controlled by the mutexes.
+## Initial State:
+firstDone is locked.
+secondDone is locked.
 
-### Elimination of Left Recursion
-Left recursion in a CFG occurs when a rule can call itself recursively as its first element, potentially leading to infinite recursion in certain parser implementations. This was removed by refactoring the grammar into right recursion, which is suitable for recursive descent parsers and many other parsing techniques.
+### After first Executes:
+firstDone is unlocked.
 
-# Model of the Solution
-### The CFG
-The provided CFG for Ruby includes the fundamental elements such as expressions, conditionals, loops, and assignment. The CFG is used to parse simple Ruby-like syntax and can be extended for a more complete representation of the language.
+### After second Executes:
+firstDone is locked.
+secondDone is unlocked.
 
-### Elimination of Ambiguity
-We will remove any ambiguities associated with how statement_list and argument_list are derived by ensuring that each valid code snippet corresponds to exactly one derivation tree.
-#### Explanation of Changes
-Intermediate States: introduced statement_tail and to handle a sequence of statements, as well as argument_tail. They are non-terminals that prevent ambiguity in sequences of statements and arguments.
-
-### Elimination of Left Recursion
-In order to eliminate ambiguity we added non-terminal statements 'statement_list_tail' and 'argument_list_tail', so there is no left recursion and the CFG remains the same.
-Using the substitution method we saw in class we would get: 
-- For *statement_list* with left recursion:
-statement_list -> statement statement_list'
-statement_list' -> statement statement_list' | ε
-- For *argument_list* with left recursion:
-argument_list -> expression argument_list'
-argument_list' -> ',' expression argument_list' | ε
-
+### After third Executes:
+secondDone is locked.
 
 # Implementation
 For the implementation of a tester for my grammar I used Python and the Natural Language Toolkit (NLTK) library, which is a powerful tool for working with human language data. A CFG is defined in the NLTK format, and the `nltk.ChartParser` is used to parse sentences according to this grammar.
@@ -39,13 +28,14 @@ The Python code provided defines the CFG and utilizes NLTK's parser. The code to
 The grammar tester, implemented in the file grammar_test.py, which uses a CFG as an input an parses through it to generate its parse tree.
 To use the Python file, we have to make sure that NLTK is installed and the CFG is correctly defined in the script. Run the script with a test sentence to see if it gets correctly parsed according to the CFG.
 The program outputs a parse tree that represents the structure of the input according to the CFG. If the input does not conform to the CFG, the parser will not output a tree.
+* explain mutex, and what the code does *
 
 ### Example Inputs and Outputs
 - Input: `if 3 < 5 then my_variable = "Ruby" end`
 - Output: A parse tree representing the structure of the if-statement.
 
 # Tests
-Tests are critical to ensuring that the CFG and parser work correctly. Each test consists of an input string that either should or should not be accepted by the grammar. The test documentation should include the input, expected outcome, and the actual outcome, whether it's a parse tree or an error indicating that the input is not accepted.
+The testFoo function creates an instance of the Foo class and three threads, each executing one of the methods (first, second, third). The threads are joined to ensure the main thread waits for their completion. We can also test our code by submitting the problem's solution into it's corresponding LeetCode problem in the following [link](https://leetcode.com/problems/print-in-order/).
 
 ### Test Example
 - Input: `while 3 <= 9 do id = "Hello" end`
@@ -53,8 +43,18 @@ Tests are critical to ensuring that the CFG and parser work correctly. Each test
 - Actual Outcome: A parse tree (if the CFG and parser are functioning correctly).
 
 # Analysis
-The CFG for this Ruby-like syntax is a Type-2 grammar in the Chomsky Hierarchy. Type-2 grammars, or context-free grammars, have rules with a single non-terminal on the left-hand side and a string of terminals and/or non-terminals on the right. This allows for a hierarchical structure necessary to describe the nested nature of programming language syntax. It is not a Type-1 or context-sensitive grammar because such grammars have rules where the production can depend on the context of the non-terminal, which is unnecessary for the structural patterns in Ruby. Similarly, it is not a Type-3 or regular grammar, which is less expressive and cannot handle the nesting and recursion present in Ruby syntax.
+### Other Possible Paradigms
+Semaphore:
+Could be used to signal the order of execution.
+Tradeoff: Semaphores can be less intuitive and harder to manage compared to mutexes.
+Difference between Mutex and Semaphore
+Mutex uses a locking mechanism i.e. if a process wants to use a resource then it locks the resource, uses it and then release it. But on the other hand, semaphore uses a signaling mechanism where wait() and signal() methods are used to show if a process is releasing a resource or taking a resource.
+A mutex is an object but semaphore is an integer variable.
+A mutex object allows multiple process threads to access a single shared resource but only one at a time. On the other hand, semaphore allows multiple process threads to access the finite instance of the resource until available.
+In mutex, the lock can be acquired and released by the same process at a time. But the value of the semaphore variable can be modified by any process that needs some resource but only one process can change the value at a time.
 
-The time complexity if the CFG parsing model using NLTK's library in python is principally tied to the length of the input string, denoted as *n*. Assuming *i* is the position in the input string, the parser examines substrings from position *i* to *n*.
+Event-driven programming:
+Using condition variables or events to signal method completions.
+Tradeoff: This approach can be more complex to implement correctly but offers more fine-grained control.
 
-For a comprenhensive CFG, the worst case time complexity is O(n^3), where each of the *n* positions iterates over O(n^2) possible substrings. However, thanks to NLTK's optimizations and a lack of ambiguity in the grammar used in this evidence, the time complexity is typically O(n^2)
+The time complexity of each method (first, second, third) is O(1) as they each perform a constant amount of work: printing a message and locking/unlocking a mutex. The overall complexity remains O(1) since the operations are independent of any input size.

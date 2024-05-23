@@ -7,19 +7,8 @@ Concurrency is a fundamental concept in modern programming, allowing multiple op
 
 # Model of the solution
 Let's model the problem using a diagram that represents the state transitions controlled by mutex.
-## Initial State:
-firstDone is locked.
-secondDone is locked.
+![image](https://github.com/AntonioLanderos/tc2037/assets/150750842/c9dded8b-5ff3-434f-91b7-04891be6ba57)
 
-### After first Executes:
-firstDone is unlocked.
-
-### After second Executes:
-firstDone is locked.
-secondDone is unlocked.
-
-### After third Executes:
-secondDone is locked.
 
 For the implementation of the solution for this problem I used C++ with the help of its libraries: thread, mutex, and functional because leetcode's base template was already using it. 
 Mutex and thread are are part of the standard C++ library and they are a powerful tool for working with multithreading. Mutex's method lock() is used to block the calling thread until the thread obtains ownership of the mutex and unlock() is used to release the ownership of the mutex.

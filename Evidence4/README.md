@@ -10,7 +10,7 @@ Let's model the problem using a diagram that represents the state transitions co
 ![image](https://github.com/AntonioLanderos/tc2037/assets/150750842/c9dded8b-5ff3-434f-91b7-04891be6ba57)
 
 # Implementation
-- **[Link to the submission]**([https://link-url-here.org](https://leetcode.com/problems/print-in-order/submissions/1266078691/))
+[Link to the submission](https://leetcode.com/problems/print-in-order/submissions/1266078691/) <br>
 For the implementation of the solution for this problem I used C++ with the help of its libraries: thread, mutex, and functional because leetcode's base template was already using it. 
 Mutex and thread are are part of the standard C++ library and they are a powerful tool for working with multithreading. Mutex's method lock() is used to block the calling thread until the thread obtains ownership of the mutex and unlock() is used to release the ownership of the mutex.
 

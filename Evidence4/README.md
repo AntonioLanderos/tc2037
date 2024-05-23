@@ -9,7 +9,8 @@ Concurrency is a fundamental concept in modern programming, allowing multiple op
 Let's model the problem using a diagram that represents the state transitions controlled by mutex.
 ![image](https://github.com/AntonioLanderos/tc2037/assets/150750842/c9dded8b-5ff3-434f-91b7-04891be6ba57)
 
-
+# Implementation
+- **[Link to the submission]**([https://link-url-here.org](https://leetcode.com/problems/print-in-order/submissions/1266078691/))
 For the implementation of the solution for this problem I used C++ with the help of its libraries: thread, mutex, and functional because leetcode's base template was already using it. 
 Mutex and thread are are part of the standard C++ library and they are a powerful tool for working with multithreading. Mutex's method lock() is used to block the calling thread until the thread obtains ownership of the mutex and unlock() is used to release the ownership of the mutex.
 
@@ -101,4 +102,3 @@ The time complexity of each method (first, second, third) is O(1) as they each p
 - TylerMSFT. (2023, 7 February). mutex Class (C++ Standard Library). Microsoft Learn. https://learn.microsoft.com/en-us/cpp/standard-library/mutex-class-stl?view=msvc-170
 - namespace «std» has no member «mutex». (s. f.). Stack Overflow. https://stackoverflow.com/questions/76794453/namespace-std-has-no-member-mutex
 - GeeksforGeeks. (2023, 18 November). Multithreading in C. GeeksforGeeks. https://www.geeksforgeeks.org/multithreading-in-cpp/
-- **[Link to the submission]**([https://link-url-here.org](https://leetcode.com/problems/print-in-order/submissions/1266078691/))

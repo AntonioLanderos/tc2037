@@ -19,7 +19,7 @@ I used this simple analogy for a better understanding of the problem:
 
 ### C++ Code
 The C++ code provided defines 3 functions which print "first", "second", and "third". We use lock() and unlock() to ensure that the threads execute these functions in the correct order.
-How It Ensures Correct Order:
+#### How It Ensures Correct Order:
 Initialization: Both firstDone and secondDone are locked initially. This setup ensures that second and third cannot execute until first and second complete, respectively.
 Execution of first: When first runs, it prints "first" and then unlocks firstDone, signaling that second can proceed.
 Execution of second: When second runs, it waits for firstDone to be unlocked (ensuring first has completed), prints "second", and then unlocks secondDone, signaling that third can proceed.

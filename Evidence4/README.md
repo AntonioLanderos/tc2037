@@ -76,12 +76,12 @@ Result: Should print "Output: firstsecondthird" and "Test Passed".
 # Analysis
 ### Other Possible Paradigms
 **Functional Programming**
-In functional programming, the problem can be approached by using pure functions and avoiding shared state. Instead of using locks or semaphores, you can structure the program to pass results from one function to the next explicitly, ensuring the correct order of execution.
+In functional programming, the problem can be approached by using pure functions and avoiding shared state. Instead of using locks or semaphores, we can structure the program to pass results from one function to the next explicitly, ensuring the correct order of execution.
 
 Tradeoff: Functional programming can simplify reasoning about concurrency by eliminating side effects, but it might require a significant shift in design and can be less intuitive for those unfamiliar with the paradigm.
 
 **Parallel Programming**
-Parallel programming involves dividing the problem into smaller tasks that can be executed concurrently. You could use parallel constructs to ensure that each method (first, second, third) runs in parallel but synchronize their completion using barriers or other synchronization mechanisms.
+Parallel programming involves dividing the problem into smaller tasks that can be executed concurrently. We could use parallel constructs to ensure that each method (first, second, third) runs in parallel but synchronize their completion using barriers or other synchronization mechanisms.
 
 Tradeoff: While parallel programming can improve performance by leveraging multiple processors, it can also introduce complexity in managing task dependencies and synchronization.
 

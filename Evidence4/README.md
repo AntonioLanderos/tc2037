@@ -96,3 +96,8 @@ Logic programming, such as using Prolog, involves declaring rules and relationsh
 Tradeoff: Logic programming can be highly expressive and powerful for certain types of problems, but it might not be as efficient or straightforward to implement for problems that require fine-grained control over thread execution.
 
 The time complexity of each method (first, second, third) is O(1) as they each perform a constant amount of work: printing a message and locking/unlocking a mutex. The overall complexity remains O(1) since the operations are independent of any input size.
+
+# References
+- TylerMSFT. (2023, 7 February). mutex Class (C++ Standard Library). Microsoft Learn. https://learn.microsoft.com/en-us/cpp/standard-library/mutex-class-stl?view=msvc-170
+- namespace «std» has no member «mutex». (s. f.). Stack Overflow. https://stackoverflow.com/questions/76794453/namespace-std-has-no-member-mutex
+- GeeksforGeeks. (2023, 18 November). Multithreading in C. GeeksforGeeks. https://www.geeksforgeeks.org/multithreading-in-cpp/

@@ -37,40 +37,40 @@ I couldn't run my code in VSCode and after investigating why, I found C++11 or C
 The test.cpp file creates an instance of the Foo class and three threads, each executing one of the methods (first, second, third). The threads are joined to ensure the main thread waits for their completion. We also check if the output is "firstsecondthird" and print whether each test passed or failed. Below are the details of the tests:
 
 ### Test Examples
-Test Case 1:
-Input: nums = [1, 2, 3]
-Explanation: Thread A calls first(), Thread B calls second(), and Thread C calls third().
-Output: "firstsecondthird"
+Test Case 1: <br> 
+Input: nums = [1, 2, 3] <br> 
+Explanation: Thread A calls first(), Thread B calls second(), and Thread C calls third(). <br> 
+Output: "firstsecondthird" <br> 
 Result: Should print "Output: firstsecondthird" and "Test Passed".
 
-Test Case 2:
-Input: nums = [1, 3, 2]
-Explanation: Thread A calls first(), Thread B calls third(), and Thread C calls second().
-Output: "firstsecondthird"
-Result: Should print "Output: firstsecondthird" and "Test Passed".
-Test Case 3:
-
-Input: nums = [2, 1, 3]
-Explanation: Thread A calls second(), Thread B calls first(), and Thread C calls third().
-Output: "firstsecondthird"
+Test Case 2: <br> 
+Input: nums = [1, 3, 2] <br> 
+Explanation: Thread A calls first(), Thread B calls third(), and Thread C calls second(). <br> 
+Output: "firstsecondthird" <br> 
 Result: Should print "Output: firstsecondthird" and "Test Passed".
 
-Test Case 4:
-Input: nums = [2, 3, 1]
-Explanation: Thread A calls second(), Thread B calls third(), and Thread C calls first().
-Output: "firstsecondthird"
+Test Case 3: <br> 
+Input: nums = [2, 1, 3] <br> 
+Explanation: Thread A calls second(), Thread B calls first(), and Thread C calls third(). <br> 
+Output: "firstsecondthird" <br> 
 Result: Should print "Output: firstsecondthird" and "Test Passed".
 
-Test Case 5:
-Input: nums = [3, 1, 2]
-Explanation: Thread A calls third(), Thread B calls first(), and Thread C calls second().
-Output: "firstsecondthird"
+Test Case 4: <br> 
+Input: nums = [2, 3, 1] <br> 
+Explanation: Thread A calls second(), Thread B calls third(), and Thread C calls first(). <br> 
+Output: "firstsecondthird" <br> 
 Result: Should print "Output: firstsecondthird" and "Test Passed".
 
-Test Case 6:
-Input: nums = [3, 2, 1]
-Explanation: Thread A calls third(), Thread B calls second(), and Thread C calls first().
-Output: "firstsecondthird"
+Test Case 5: <br> 
+Input: nums = [3, 1, 2] <br> 
+Explanation: Thread A calls third(), Thread B calls first(), and Thread C calls second(). <br> 
+Output: "firstsecondthird" <br> 
+Result: Should print "Output: firstsecondthird" and "Test Passed".
+
+Test Case 6: <br> 
+Input: nums = [3, 2, 1] <br> 
+Explanation: Thread A calls third(), Thread B calls second(), and Thread C calls first(). <br> 
+Output: "firstsecondthird" <br> 
 Result: Should print "Output: firstsecondthird" and "Test Passed".
 
 # Analysis

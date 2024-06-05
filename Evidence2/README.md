@@ -4,7 +4,7 @@ The language I chose to generate its grammar was *Ruby programming language*.
 Ruby is a high-level, interpreted programming language designed for simplicity and productivity. Its elegant syntax is natural to read and easy to write. It supports multiple programming paradigms, including procedural, object-oriented, and functional programming.
 
 ### The Modeling Technique: Context-Free Grammar (CFG)
-A CFG is a collection of recursive rewriting rules used to generate patterns of strings. A CFG consists of a number of productions, each of which states that a certain symbol can be replaced by a sequence of other symbols. CFG is powerful enough to describe the syntax of most programming languages, and Ruby is no exception. 
+A CFG is a collection of recursive rewriting rules used to generate patterns of strings. A CFG consists of a number of productions, each of which states that a certain symbol can be replaced by a sequence of other symbols. CFG is powerful enough to describe the syntax of most programming languages, and Ruby is no exception. (GeeksforGeeks, 2023a)
 
 ### Elimination of Ambiguity
 Ambiguity in a grammar means there's more than one way to parse a string according to the grammar. This was resolved by refining the production rules such as the `statement_list` to ensure a unique parse tree for every valid string of the language.
@@ -48,16 +48,33 @@ The program outputs a parse tree that represents the structure of the input acco
 - Output: A parse tree representing the structure of the if-statement.
 
 # Tests
-Tests are critical to ensuring that the CFG and parser work correctly. Each test consists of an input string that either should or should not be accepted by the grammar. The test documentation should include the input, expected outcome, and the actual outcome, whether it's a parse tree or an error indicating that the input is not accepted.
+### Test Examples
+**Accepted Inputs:**
+- `if 1 < 2 then id = "Hello" end`
+- `while 3 != 4 do _underscore_variable = "123" end`
+- `id = "Ruby"`
+- `variable_name ( myVariable , foo_bar )`
+- `if 5 >= 6 then MyVariable = "string:#{variable}" end`
 
-### Test Example
-- Input: `while 3 <= 9 do id = "Hello" end`
-- Expected Outcome: A parse tree showing the structure of the while loop.
-- Actual Outcome: A parse tree (if the CFG and parser are functioning correctly).
+**Rejected Inputs:**
+- `if 1 < 2 then id "Hello" end` (missing `=`)
+- `while 3 4 do _underscore_variable = "123" end` (missing `!=`)
+- `id "Ruby"` (missing `=`)
+- `variable_name ( myVariable foo_bar )` (missing `,`)
+- `if 5 6 then MyVariable = "string:#{variable}" end` (missing `>=`)
+
+### Documentation of Pushdown Automata / LL1 Parsing
+For each test string, the `nltk` library generates a parse tree, demonstrating how the input is parsed according to the grammar. This visual representation helps verify the correctness of the grammar.
 
 # Analysis
-The CFG for this Ruby-like syntax is a Type-2 grammar in the Chomsky Hierarchy. Type-2 grammars, or context-free grammars, have rules with a single non-terminal on the left-hand side and a string of terminals and/or non-terminals on the right. This allows for a hierarchical structure necessary to describe the nested nature of programming language syntax. It is not a Type-1 or context-sensitive grammar because such grammars have rules where the production can depend on the context of the non-terminal, which is unnecessary for the structural patterns in Ruby. Similarly, it is not a Type-3 or regular grammar, which is less expressive and cannot handle the nesting and recursion present in Ruby syntax.
+The CFG for this Ruby-like syntax is a Type-2 grammar in the Chomsky Hierarchy. Type-2 grammars, or context-free grammars, have rules with a single non-terminal on the left-hand side and a string of terminals and/or non-terminals on the right. This allows for a hierarchical structure necessary to describe the nested nature of programming language syntax. It is not a Type-1 or context-sensitive grammar because such grammars have rules where the production can depend on the context of the non-terminal, which is unnecessary for the structural patterns in Ruby. Similarly, it is not a Type-3 or regular grammar, which is less expressive and cannot handle the nesting and recursion present in Ruby syntax. (Chomsky Classification Of Grammars, s. f.)
 
 The time complexity if the CFG parsing model using NLTK's library in python is principally tied to the length of the input string, denoted as *n*. Assuming *i* is the position in the input string, the parser examines substrings from position *i* to *n*.
 
 For a comprenhensive CFG, the worst case time complexity is O(n^3), where each of the *n* positions iterates over O(n^2) possible substrings. However, thanks to NLTK's optimizations and a lack of ambiguity in the grammar used in this evidence, the time complexity is typically O(n^2)
+
+# References
+NLP1. (s. f.). https://tildesites.bowdoin.edu/~allen/nlp/nlp1.html#:~:text=A%20context-free%20grammar%20(CFG,reading%20from%20left%20to%20right.
+GeeksforGeeks. (2023a, julio 11). What is Context-Free Grammar? GeeksforGeeks. https://www.geeksforgeeks.org/what-is-context-free-grammar/
+NLTK :: Natural Language Toolkit. (s. f.). https://www.nltk.org/
+Chomsky Classification of Grammars. (s. f.). https://www.tutorialspoint.com/automata_theory/chomsky_classification_of_grammars.htm

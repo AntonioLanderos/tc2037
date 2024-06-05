@@ -108,7 +108,7 @@ The time complexity if the CFG parsing model using NLTK's library in python is p
 For a comprenhensive CFG, the worst case time complexity is O(n^3), where each of the *n* positions iterates over O(n^2) possible substrings. However, thanks to NLTK's optimizations and a lack of ambiguity in the grammar used in this evidence, the time complexity is typically O(n^2)
 
 # References
-NLP1. (s. f.). https://tildesites.bowdoin.edu/~allen/nlp/nlp1.html#:~:text=A%20context-free%20grammar%20(CFG,reading%20from%20left%20to%20right.
-GeeksforGeeks. (2023a, julio 11). What is Context-Free Grammar? GeeksforGeeks. https://www.geeksforgeeks.org/what-is-context-free-grammar/
-NLTK :: Natural Language Toolkit. (s. f.). https://www.nltk.org/
-Chomsky Classification of Grammars. (s. f.). https://www.tutorialspoint.com/automata_theory/chomsky_classification_of_grammars.htm
+- NLP1. (s. f.). https://tildesites.bowdoin.edu/~allen/nlp/nlp1.html#:~:text=A%20context-free%20grammar%20(CFG,reading%20from%20left%20to%20right. \
+- GeeksforGeeks. (2023a, julio 11). What is Context-Free Grammar? GeeksforGeeks. https://www.geeksforgeeks.org/what-is-context-free-grammar/
+- NLTK :: Natural Language Toolkit. (s. f.). https://www.nltk.org/
+- Chomsky Classification of Grammars. (s. f.). https://www.tutorialspoint.com/automata_theory/chomsky_classification_of_grammars.htm

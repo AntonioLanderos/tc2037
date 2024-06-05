@@ -2,7 +2,6 @@ import nltk
 from nltk import CFG
 nltk.download('punkt')
 
-# Define a context-free grammar
 grammar = CFG.fromstring("""
     program -> statement_list
     statement_list -> statement | statement statement_list
@@ -21,22 +20,33 @@ grammar = CFG.fromstring("""
     argument_list -> expression | expression ',' argument_list
 """)
 
-
-# Create a parser with the defined grammar
 parser = nltk.ChartParser(grammar)
 
-# Input sentence to be parsed
-sentence = 'if 3 < 5 then my_variable = "Ruby" end'
-# sentence = 'while 3 <= 9 do id = "Hello" end'
-# sentence = 'id = "Hello"'
-# sentence = 'my_variable = "string:#{variable}"'
+test_cases = [
+    ("Accepted", 'if 3 < 5 then my_variable = "Ruby" end'),
+    ("Accepted", 'while 3 <= 9 do id = "Hello" end'),
+    ("Accepted", 'id = "Hello"'),
+    ("Accepted", 'my_variable = "string:#{variable}"'),
+    ("Rejected", 'if 3 5 then my_variable = "Ruby" end'),  # Missing comparison operator
+    ("Rejected", 'while 3 9 do id = "Hello" end'),  # Missing comparison operator
+    ("Rejected", 'variable_name myVariable , foo_bar'),  # Incorrect function call syntax
+    ("Rejected", 'if 5 6 then MyVariable = "string:#{variable}" end'),  # Missing comparison operator
+]
 
+def test_grammar(sentence):
+    tokens = sentence.split()
+    try:
+        trees = list(parser.parse(tokens))
+        if trees:
+            print("Accepted: ", sentence)
+            for tree in trees:
+                tree.pretty_print()
+        else:
+            print("Rejected: ", sentence)
+    except ValueError as e:
+        print("Rejected: ", sentence)
 
-
-# Tokenize the sentence
-#tokens = nltk.word_tokenize(sentence)
-tokens = sentence.split()
-
-# Parse the sentence
-for tree in parser.parse(tokens):
-    tree.pretty_print()
+for result, sentence in test_cases:
+    print(f"Expected {result}:")
+    test_grammar(sentence)
+    print()

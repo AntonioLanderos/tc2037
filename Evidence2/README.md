@@ -48,23 +48,57 @@ The program outputs a parse tree that represents the structure of the input acco
 - Output: A parse tree representing the structure of the if-statement.
 
 # Tests
-### Test Examples
+### Test Cases
 **Accepted Inputs:**
-- `if 1 < 2 then id = "Hello" end`
-- `while 3 != 4 do _underscore_variable = "123" end`
-- `id = "Ruby"`
-- `variable_name ( myVariable , foo_bar )`
-- `if 5 >= 6 then MyVariable = "string:#{variable}" end`
+1. `if 3 < 5 then my_variable = "Ruby" end`
+2. `while 3 <= 9 do id = "Hello" end`
+3. `id = "Hello"`
+4. `my_variable = "string:#{variable}"`
 
 **Rejected Inputs:**
-- `if 1 < 2 then id "Hello" end` (missing `=`)
-- `while 3 4 do _underscore_variable = "123" end` (missing `!=`)
-- `id "Ruby"` (missing `=`)
-- `variable_name ( myVariable foo_bar )` (missing `,`)
-- `if 5 6 then MyVariable = "string:#{variable}" end` (missing `>=`)
+1. `if 3 5 then my_variable = "Ruby" end` (missing comparison operator)
+2. `while 3 9 do id = "Hello" end` (missing comparison operator)
+3. `id "Hello"` (missing `=`)
+4. `variable_name myVariable , foo_bar` (incorrect function call syntax)
+5. `if 5 6 then MyVariable = "string:#{variable}" end` (missing comparison operator)
 
 ### Documentation of Pushdown Automata / LL1 Parsing
 For each test string, the `nltk` library generates a parse tree, demonstrating how the input is parsed according to the grammar. This visual representation helps verify the correctness of the grammar.
+
+### Running the Tests
+To run the tests, simply execute the script. The script will parse each test sentence and print whether it is accepted or rejected. If the sentence is accepted, the parse tree will be displayed using `pretty_print()`.
+
+```
+Expected Accepted:
+Accepted:  if 3 < 5 then my_variable = "Ruby" end
+                  program                                   
+                    |                                       
+            statement_list                                  
+                    |                                       
+             if_statement                                   
+   ________________|________________                         
+  |          |        condition        |                    
+  |          |        ______|_______    |                    
+  |          |       |              |   |                    
+  if       integer comparisson_operator integer statement_list
+  |          |          |        |      |      |              
+  |          3          |        <      5      |              
+ then statement assignment                     
+     |      |       ______|________                  
+    my_variable =      string                       
+                |         |                             
+                =       "Ruby"                         
+     |________________|                                   
+                   end                                     
+
+Expected Rejected:
+Rejected:  if 3 5 then my_variable = "Ruby" end
+
+...
+
+Expected Rejected:
+Rejected:  if 5 6 then MyVariable = "string:#{variable}" end
+```
 
 # Analysis
 The CFG for this Ruby-like syntax is a Type-2 grammar in the Chomsky Hierarchy. Type-2 grammars, or context-free grammars, have rules with a single non-terminal on the left-hand side and a string of terminals and/or non-terminals on the right. This allows for a hierarchical structure necessary to describe the nested nature of programming language syntax. It is not a Type-1 or context-sensitive grammar because such grammars have rules where the production can depend on the context of the non-terminal, which is unnecessary for the structural patterns in Ruby. Similarly, it is not a Type-3 or regular grammar, which is less expressive and cannot handle the nesting and recursion present in Ruby syntax. (Chomsky Classification Of Grammars, s. f.)

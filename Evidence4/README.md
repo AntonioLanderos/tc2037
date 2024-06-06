@@ -26,7 +26,7 @@ I used this simple analogy for a better understanding of the problem:
 - unlock(): After you finish using the bathroom, you return the key (unlock the door), so the next person can use it.
 
 ### C++ Code
-The C++ code provided defines 3 functions which print "first", "second", and "third". We use lock() and unlock() to ensure that the threads execute these functions in the correct order.
+The C++ code implemented to solve this problem, defines 3 functions which print "first", "second", and "third". We use lock() and unlock() to ensure that the threads execute these functions in the correct order.
 #### How It Ensures Correct Order:
 Initialization: Both firstDone and secondDone are locked initially. This setup ensures that second and third cannot execute until first and second complete, respectively.
 Execution of first: When first runs, it prints "first" and then unlocks firstDone, signaling that second can proceed.
@@ -121,3 +121,4 @@ The **time complexity** of each method (first, second, third) is O(1) as they ea
 - TylerMSFT. (2023, 7 February). mutex Class (C++ Standard Library). Microsoft Learn. https://learn.microsoft.com/en-us/cpp/standard-library/mutex-class-stl?view=msvc-170
 - namespace «std» has no member «mutex». (s. f.). Stack Overflow. https://stackoverflow.com/questions/76794453/namespace-std-has-no-member-mutex
 - GeeksforGeeks. (2023, 18 November). Multithreading in C. GeeksforGeeks. https://www.geeksforgeeks.org/multithreading-in-cpp/
+- Foster, L. (2023, 31 octubre). Concurrency in C++ : Multithreading and Concurrent Programming. Medium. https://medium.com/@lfoster49203/concurrency-in-c-multithreading-and-concurrent-programming-ccf81110c284

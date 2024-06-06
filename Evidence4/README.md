@@ -19,7 +19,7 @@ This sequence diagram illustrates the synchronization and execution flow of thre
 # Implementation
 [Link to the submission](https://leetcode.com/problems/print-in-order/submissions/1266078691/) <br>
 For the implementation of the solution for this problem I used C++ with the help of its libraries: thread, mutex, and functional because leetcode's base template was already using it. 
-Mutex and thread are are part of the standard C++ library and they are a powerful tool for working with multithreading. Mutex's method lock() is used to block the calling thread until the thread obtains ownership of the mutex and unlock() is used to release the ownership of the mutex.
+Mutex and thread are part of the standard C++ library and they are a powerful tool for working with multithreading. Mutex's method lock() is used to block the calling thread until the thread obtains ownership of the mutex and unlock() is used to release the ownership of the mutex.
 
 I used this simple analogy for a better understanding of the problem: 
 - lock(): When you want to use the bathroom, you take the key (lock the door). If someone else is already using the bathroom (the door is locked), you wait until they are done and the door is unlocked.

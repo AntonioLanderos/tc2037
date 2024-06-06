@@ -25,6 +25,7 @@ Intermediate States: introduced statement_tail, as well as argument_tail. They a
 
 ### Elimination of Left Recursion
 ![Eliminate left recursion](NoLeft.png)
+
 In order to eliminate ambiguity we added non-terminal statements 'statement_list_tail' and 'argument_list_tail', so there is no left recursion and the CFG remains the same.
 Using the substitution method we saw in class we would get: 
 - For *statement_list* with left recursion:

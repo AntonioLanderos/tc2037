@@ -8,6 +8,13 @@ Concurrency is a fundamental concept in modern programming, allowing multiple op
 # Model of the solution
 Let's model the problem using a diagram that represents the state transitions controlled by mutex.
 ![image](https://github.com/AntonioLanderos/tc2037/assets/150750842/77b1427a-1760-4155-a314-2c380a39867c)
+#### Description
+This sequence diagram illustrates the synchronization and execution flow of three threads (`Thread 1`, `Thread 2`, and `Thread 3`) using two mutexes (`firstDone` and `secondDone`). The goal is to ensure that the `printFirst`, `printSecond`, and `printThird` functions are executed in the correct order.
+
+- **Thread 1** starts first, performs its task, and signals `Thread 2` by unlocking `firstDone`.
+- **Thread 2** waits for `firstDone` to be unlocked, performs its task, and signals `Thread 3` by unlocking `secondDone`.
+- **Thread 3** waits for `secondDone` to be unlocked, performs its task, and completes the sequence.
+
 
 # Implementation
 [Link to the submission](https://leetcode.com/problems/print-in-order/submissions/1266078691/) <br>

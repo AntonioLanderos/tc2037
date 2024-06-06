@@ -29,6 +29,18 @@ The solution, implemented in the file solution.h, which uses a `nums` array of 3
 
 I couldn't run my code in VSCode and after investigating why, I found C++11 or C11 Multithreading features are only supported by POSIX threads, so if you are using win32, multithreading won't be supported.
 
+### Threads in the Code
+In the `test.cpp` file, we create multiple threads to execute the functions `first`, `second`, and `third` concurrently. Each thread is responsible for executing one of the functions:
+- **Thread 1**: Executes the `first` function.
+- **Thread 2**: Executes the `second` function.
+- **Thread 3**: Executes the `third` function.
+
+Here’s how the threads are created and managed:
+- We define the tasks for each thread using lambda functions that capture the output stream.
+- We initialize the threads in a vector and assign the appropriate function (`first`, `second`, or `third`) to each thread based on the input array.
+- We start the threads, and each thread waits for the necessary mutex to be unlocked before proceeding.
+- Finally, we join the threads to ensure that the main program waits for all threads to complete before continuing.
+
 ### Example Inputs and Outputs
 - Input: `nums = [2, 1, 3]`
 - Output: `firstsecondthird Test Passed`

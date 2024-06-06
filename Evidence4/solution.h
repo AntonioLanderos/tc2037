@@ -16,14 +16,14 @@ class Foo {
       }
     
       void first(function<void()> printFirst) {
-        // printThird() outputs "third". Do not change or remove this line.
+        // printFirst() outputs "first". Do not change or remove this line.
         printFirst();
         firstDone.unlock();
       }
     
       void second(function<void()> printSecond) {
         firstDone.lock();
-        // printThird() outputs "third". Do not change or remove this line.
+        // printSecond() outputs "second". Do not change or remove this line.
         printSecond();
         secondDone.unlock();
       }

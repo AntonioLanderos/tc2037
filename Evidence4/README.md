@@ -93,6 +93,21 @@ Explanation: Thread A calls third(), Thread B calls second(), and Thread C calls
 Output: "firstsecondthird" <br> 
 Result: Should print "Output: firstsecondthird" and "Test Passed".
 
+```
+Output: firstsecondthird
+Test Passed
+Output: firstsecondthird
+Test Passed
+Output: firstsecondthird
+Test Passed
+Output: firstsecondthird
+Test Passed
+Output: firstsecondthird
+Test Passed
+Output: firstsecondthird
+Test Passed
+```
+
 # Analysis
 ### Other Possible Paradigms
 **Functional Programming**

@@ -2,7 +2,7 @@
 ### Context of the Problem
 The problem "1114. Print in Order" from LeetCode requires ensuring that three methods (first, second, third) are executed in the correct order, despite being called from different threads. This problem is an example of a common concurrency issue where the order of execution needs to be controlled to maintain correct behavior. Solving this problem ensures that multithreaded applications behave deterministically and avoids issues that can arise from race conditions.
 
-### Why It Is Useful
+### Why is it Useful
 Concurrency is a fundamental concept in modern programming, allowing multiple operations to be performed simultaneously. It is widely used in applications that require parallel processing, such as web servers, data processing, and real-time systems. Understanding how to control the order of execution in a concurrent environment is crucial for building reliable and efficient systems.
 
 # Model of the solution

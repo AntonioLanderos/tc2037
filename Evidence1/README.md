@@ -19,11 +19,11 @@ I designed a Deterministic Finite Automaton (DFA) to recognize the chosen langua
 #### DFA Explanation
 A DFA is a theoretical model of computation that defines a machine with a finite number of states. It processes strings of symbols, transitioning from one state to another according to a set of rules defined by the input symbols. The DFA accepts a string if it ends in an accepting state after reading the entire string. 
 
-In our DFA:
-- The start state is `s0`.
-- There are multiple transitions from the start state to intermediate states (`s1`, `s16`), depending on the input symbol.
+In the DFA:
+- There are multiple transitions from the start state to intermediate states, depending on the input symbol.
 - Each word from the language has a unique path through the states that leads to an accepting state.
-This is the automata generated for this language: 
+This is the automata generated for this language:
+
 ![image](https://github.com/AntonioLanderos/tc2037/assets/150750842/b4ca0602-2461-4623-a81f-c2c16cc714b2)
 
 The presented automata is equivalent to the following regular expression:
@@ -49,8 +49,11 @@ Example inputs and outputs include:
   'Test *1* passed'
   'Test *2* passed'
   etc.
-
   (The text marked in *italics* represents an iterator that goes through the array of inputs and a counter that checks if they pass the tests)
+
+  ## Test cases
+  The Python script tests a set of input strings against the regular expression pattern. <br>
+  To run the tests, execute the Python script. The script will parse each input string and print whether it is accepted by the regex pattern. It will also count the number of tests that passed.
 
 # Analysis
 The implementation utilizes Python's regular expression library (re) to parse input strings according to the defined rules of the Chakobsa language. Here's an analysis of the implementation:

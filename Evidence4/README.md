@@ -7,7 +7,7 @@ Concurrency is a fundamental concept in modern programming, allowing multiple op
 
 # Model of the solution
 Let's model the problem using a diagram that represents the state transitions controlled by mutex.
-![image](https://github.com/AntonioLanderos/tc2037/assets/150750842/c9dded8b-5ff3-434f-91b7-04891be6ba57)
+![image](https://github.com/AntonioLanderos/tc2037/assets/150750842/77b1427a-1760-4155-a314-2c380a39867c)
 
 # Implementation
 [Link to the submission](https://leetcode.com/problems/print-in-order/submissions/1266078691/) <br>
